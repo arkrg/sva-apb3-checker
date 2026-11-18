@@ -1,7 +1,4 @@
-package apb_checker_pkg;
-  localparam int WIDTH_DATA = 32;
-  localparam int WIDTH_ADDR = 32;
-
+package apb_rules_pkg;
   typedef enum int {
     R1 = 0,  // 규칙 1: Setup 다음 사이클은 Access
     R2 = 1,  // 규칙 2: Access 전 사이클은 Setup
@@ -13,4 +10,4 @@ package apb_checker_pkg;
 
 endpackage
 
-import apb_checker_pkg::*;
+import apb_rules_pkg::*;

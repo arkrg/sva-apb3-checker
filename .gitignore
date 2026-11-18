@@ -1,0 +1,5 @@
+build/
+__gen__/
+.hdl_*
+*.bak
+dev_*
