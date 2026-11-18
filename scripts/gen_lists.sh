@@ -5,8 +5,6 @@
 #         <출력>/tb_cases.svh    (케이스 파일 include + run_rule(n) + run_all())
 set -euo pipefail
 root=${1:?repo 루트 경로}
-out=${2:?출력 폴더}
-mkdir -p "$out"
 
 # ---- Alias ----
 ws="[[:space:]]*"
@@ -33,7 +31,7 @@ done
     for n in $chk_nums; do
         printf '`include "rule%s.svh"\n' "$n"
     done
-} >"$out/chk_rules.svh"
+} >"$root/chk/rules/_gen_chk_rules.svh"
 
 # ---- tb_cases.svh ----
 {
@@ -59,6 +57,6 @@ done
         printf '  run_rule_%s();\n' "$n"
     done
     echo "endtask"
-} >"$out/tb_cases.svh"
+} >"$root/tb/cases/_gen_tb_cases.svh"
 
 echo "생성: chk 규칙 [$(echo $chk_nums)]  케이스 규칙 [$(echo $case_nums)]"

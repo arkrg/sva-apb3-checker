@@ -13,7 +13,7 @@ module tb_top;
   always #5 pclk = ~pclk;
 
   `include "tb_common.svh"  // begin_case / end_case / step
-  `include "tb_cases.svh"  // 생성 파일: 규칙별 케이스 include + run_rule(n) + run_all()
+  `include "_gen_tb_cases.svh"  // 생성 파일: 규칙별 케이스 include + run_rule(n) + run_all()
 
   initial begin
     string rule_str;

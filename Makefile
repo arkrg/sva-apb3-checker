@@ -9,13 +9,12 @@ RULE            ?= all
 SHELL := /bin/bash
 ROOT  := $(CURDIR)
 BUILD   := build
-GEN   := __gen__
 TOP := tb_top
 COV := cov_report/rule$(RULE)
 
 # 컴파일 순서: pkg -> chk -> tb. .svh는 컴파일 목록에 넣지 않고 include 경로로만 찾는다.
 SRCS    := $(wildcard pkg/*.sv) $(sort $(wildcard chk/*.sv)) $(wildcard tb/*.sv)
-INCDIRS := -i ../chk/rules -i ../tb -i ../tb/cases -i ../$(GEN)
+INCDIRS := -i ../chk/rules -i ../tb -i ../tb/cases
 RULE_NUMS := $(shell ls tb/cases | sed -n 's/^rule\([0-9][0-9]*\)_cases\.svh$$/\1/p' | sort -n)
 # RULE_NUMS := $(shell ls tb/cases 2>/dev/null | sed -n 's/^rule\([0-9][0-9]*\)_cases\.svh$$/\1/p' | sort -n)
 
@@ -23,7 +22,7 @@ RULE_NUMS := $(shell ls tb/cases | sed -n 's/^rule\([0-9][0-9]*\)_cases\.svh$$/\
 all: run
 
 gen:
-	scripts/gen_lists.sh $(ROOT) $(GEN)
+	scripts/gen_lists.sh $(ROOT)
 
 compile: gen
 	@mkdir -p $(BUILD)

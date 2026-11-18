@@ -21,5 +21,5 @@ module apb3_chk (
   sequence s_setup; setup; endsequence
   sequence s_access; access; endsequence
 
-  `include "chk_rules.svh"  // 생성 파일: 규칙 파일 include 목록
+  `include "_gen_chk_rules.svh"  // 생성 파일: 규칙 파일 include 목록
 endmodule
